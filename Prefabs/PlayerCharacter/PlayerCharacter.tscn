@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://k4aky2wyyeb8"]
+[gd_scene load_steps=8 format=3 uid="uid://k4aky2wyyeb8"]
 
 [ext_resource type="Script" path="res://Prefabs/PlayerCharacter/PlayerCharacter.gd" id="1_p62v6"]
 [ext_resource type="Script" path="res://Prefabs/PlayerAnimHandler/PlayerAnimHandler.gd" id="2_cuim5"]
-[ext_resource type="Script" path="res://Components/HealthComponent/HealthComponent.gd" id="2_tpwkx"]
 [ext_resource type="PackedScene" uid="uid://cby66chso83cc" path="res://Models/SK_BaseHuman/SK_BaseHuman_Torso.glb" id="3_jo81g"]
 [ext_resource type="AnimationLibrary" uid="uid://b0gha3a34qalp" path="res://Models/SK_BaseHuman/Animations/ALIB_BaseHuman_Torso.res" id="3_wgyf0"]
 [ext_resource type="PackedScene" uid="uid://ujm4vy1eea0m" path="res://Models/SK_BaseHuman/SK_BaseHuman_Legs.glb" id="4_bofic"]
@@ -26,9 +25,6 @@ playback_default_blend_time = 1.0
 [node name="AnimPlayer_Legs" type="AnimationPlayer" parent="PlayerAnimHandler"]
 root_node = NodePath("../../Legs/SK_BaseHuman_Legs")
 playback_default_blend_time = 1.0
-
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("2_tpwkx")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79833, 0)

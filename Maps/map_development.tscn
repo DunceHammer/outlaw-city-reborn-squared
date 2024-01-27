@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://b16mdqiny05d5"]
+[gd_scene load_steps=10 format=3 uid="uid://b16mdqiny05d5"]
 
 [ext_resource type="PackedScene" uid="uid://k4aky2wyyeb8" path="res://Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="1_2hkgx"]
-[ext_resource type="PackedScene" uid="uid://ccvajl0ibt7ci" path="res://Prefabs/DemoTrap/DemoTrap.tscn" id="2_tak7w"]
 [ext_resource type="AnimationLibrary" uid="uid://b0gha3a34qalp" path="res://Models/SK_BaseHuman/Animations/ALIB_BaseHuman_Torso.res" id="3_n44iw"]
 [ext_resource type="PackedScene" uid="uid://bcq47bwn1demc" path="res://Models/SK_BaseHuman/Animations/ANIM_BaseHuman_Idle.glb" id="4_kv3ew"]
 
@@ -55,9 +54,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.86892, 47.1209)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.194, -10.1217, 14.5385)
 shape = SubResource("BoxShape3D_payc8")
-
-[node name="DemoTrap" parent="." instance=ExtResource("2_tak7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03558, 0.5, 6.67613)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
