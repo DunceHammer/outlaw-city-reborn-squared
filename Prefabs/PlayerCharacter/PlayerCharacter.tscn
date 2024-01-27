@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://k4aky2wyyeb8"]
+
+[ext_resource type="Script" path="res://Prefabs/PlayerCharacter/PlayerCharacter.gd" id="1_p62v6"]
+[ext_resource type="Script" path="res://Components/HealthComponent/HealthComponent.gd" id="2_tpwkx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6s0q4"]
+size = Vector3(1, 2.20117, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lu146"]
+
+[node name="PlayerCharacter" type="CharacterBody3D"]
+script = ExtResource("1_p62v6")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_tpwkx")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11986, 0)
+shape = SubResource("BoxShape3D_6s0q4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 2.97569e-08, -8.22026e-08, -5.79977e-08, 0.477757, 0.878492, 6.5414e-08, 0.878492, -0.477757, 0, 16.3101, -6.87194)
+
+[node name="Swivel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519279, 0)
+
+[node name="CharacterMesh" type="MeshInstance3D" parent="Swivel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.491815, 0)
+mesh = SubResource("CapsuleMesh_lu146")
+skeleton = NodePath("../..")
+
+[node name="IndicatorMesh" type="MeshInstance3D" parent="Swivel"]
+transform = Transform3D(0.293099, 0, 0, 0, -0.0022063, -0.209358, 0, 0.995342, -0.000464067, 0, 0.491815, 0.740862)
+mesh = SubResource("CapsuleMesh_lu146")
+skeleton = NodePath("../..")

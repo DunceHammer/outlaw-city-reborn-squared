@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://b16mdqiny05d5"]
+
+[ext_resource type="PackedScene" uid="uid://k4aky2wyyeb8" path="res://Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="1_2hkgx"]
+[ext_resource type="PackedScene" uid="uid://ccvajl0ibt7ci" path="res://Prefabs/DemoTrap/DemoTrap.tscn" id="2_tak7w"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e8kfr"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_jhaci"]
+sky_material = SubResource("ProceduralSkyMaterial_e8kfr")
+
+[sub_resource type="Environment" id="Environment_81khc"]
+background_mode = 2
+sky = SubResource("Sky_jhaci")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hnic7"]
+size = Vector3(50.5517, 1, 50.3868)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u78es"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_payc8"]
+size = Vector3(531.106, 1, 455.948)
+
+[node name="MAP_Development" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_81khc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.12941, 0.482963, 0, 0.965926, 0.258819, -0.5, 0.224144, -0.836516, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115814, 0, -0.207916)
+shape = SubResource("BoxShape3D_hnic7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+mesh = SubResource("BoxMesh_u78es")
+skeleton = NodePath("../..")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_2hkgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41805, 5.06991, -1.33422)
+
+[node name="Floor2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.86892, 47.1209)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.194, -10.1217, 14.5385)
+shape = SubResource("BoxShape3D_payc8")
+
+[node name="DemoTrap" parent="." instance=ExtResource("2_tak7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03558, 0.5, 6.67613)
