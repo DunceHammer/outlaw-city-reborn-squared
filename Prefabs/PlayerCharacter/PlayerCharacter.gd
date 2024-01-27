@@ -7,9 +7,16 @@ const GRAVITY = 20.0
 const RAYCAST_LENGTH = 1000.0
 
 
+const ACTION_STATE_IDLE = [0, 0, 0, "Idle"]
+const ACTION_STATE_PUNCH = [0, 1, 2, "Punch"]
+
+
 var is_moving = false
 var legs_target = 0.0
 var legs_rotate_speed = 0.1
+var action_state = ACTION_STATE_IDLE
+var action_clear_timer = 0.0
+var action_cooldown = 0.0
 
 
 # TODO - not hardcode movement keys
@@ -53,28 +60,61 @@ func handle_mouse_input():
 		$Swivel.global_transform.basis = Basis().rotated(Vector3(0, 1, 0), new_rotation.y)
 
 
+func handle_action_input():
+	if Input.is_key_pressed(KEY_SPACE):
+		attempt_action(ACTION_STATE_PUNCH)
+
+
 func determine_legs_target():
 	if not is_moving:
-		$Legs.get_node("AnimationPlayer").play("Idle")
 		legs_target = rad_to_deg($Swivel.rotation.y)
 		legs_rotate_speed = 0.15
 	else:
 		var target_y = 0.0
-		$Legs.get_node("AnimationPlayer").play("Run")
 		
+		# this should be changed to use radians from the beginning
+		# currently, this is calculated in degrees, then converted to radians later.
+		# I'm sure this can also be made more concise by someone who knows math better than I do.
 		if velocity.x != 0:
 			target_y = 90 if velocity.x > 0 else 280
 			if velocity.z > 0:
 				target_y = 45 if velocity.x > 0 else 315
 			elif velocity.z < 0:
 				target_y = 135 if velocity.x > 0 else 225
+		elif velocity.z != 0:
+			target_y = 0 if velocity.z > 0 else 180
 
 		legs_target = target_y
 		legs_rotate_speed = 0.1
 		
 
+func attempt_action(action: Array):
+	if action_state != ACTION_STATE_IDLE or action_cooldown > 0.0:
+		return
+	
+	do_action(action)
+
+
+func do_action(action: Array):
+	action_state = action
+	action_clear_timer = action[1]
+	action_cooldown = action[2]
+
+
+func update_action_timer(delta):
+	action_cooldown -= delta
+
+	if action_clear_timer <= 0.0:
+		return
+
+	action_clear_timer -= delta
+	if action_clear_timer <= 0.0:
+		action_state = ACTION_STATE_IDLE
+		action_clear_timer = 0.0
+
+
 func rotate_legs(delta):
-	$Legs.rotation.y = lerp_angle($Legs.rotation.y, deg_to_rad(legs_target), legs_rotate_speed)
+	$Legs.rotation.y = lerp_angle($Legs.rotation.y, deg_to_rad(legs_target), legs_rotate_speed * (delta * 50))
 	
 
 func initialize():
@@ -101,7 +141,9 @@ func _physics_process(delta):
 
 	handle_movement_input(delta)
 	handle_mouse_input()
+	handle_action_input()
 	determine_legs_target()
 	rotate_legs(delta)
+	update_action_timer(delta)
 	move_and_slide()
 

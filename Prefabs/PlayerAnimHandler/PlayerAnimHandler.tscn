@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://tq8d62iig851"]
+
+[ext_resource type="Script" path="res://Prefabs/PlayerAnimHandler/PlayerAnimHandler.gd" id="1_ujhua"]
+[ext_resource type="AnimationLibrary" uid="uid://b64ucumloy2vb" path="res://Models/SK_BaseHuman/Animations/ALIB_BaseHuman_Legs.res" id="2_0fbx8"]
+[ext_resource type="AnimationLibrary" uid="uid://b0gha3a34qalp" path="res://Models/SK_BaseHuman/Animations/ALIB_BaseHuman_Torso.res" id="2_hq1w6"]
+
+[node name="PlayerAnimHandler" type="Node"]
+script = ExtResource("1_ujhua")
+
+[node name="AnimPlayer_Torso" type="AnimationPlayer" parent="."]
+libraries = {
+"ALIB_BaseHuman_Torso": ExtResource("2_hq1w6")
+}
+
+[node name="AnimPlayer_Legs" type="AnimationPlayer" parent="."]
+root_node = NodePath("../SK_BaseHuman_Legs")
+libraries = {
+"": ExtResource("2_0fbx8")
+}
