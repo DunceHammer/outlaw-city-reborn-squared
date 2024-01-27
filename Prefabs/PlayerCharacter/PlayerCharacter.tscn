@@ -1,12 +1,95 @@
-[gd_scene load_steps=5 format=3 uid="uid://k4aky2wyyeb8"]
+[gd_scene load_steps=9 format=3 uid="uid://k4aky2wyyeb8"]
 
 [ext_resource type="Script" path="res://Prefabs/PlayerCharacter/PlayerCharacter.gd" id="1_p62v6"]
 [ext_resource type="Script" path="res://Components/HealthComponent/HealthComponent.gd" id="2_tpwkx"]
+[ext_resource type="PackedScene" uid="uid://cby66chso83cc" path="res://Models/SK_BaseHuman/SK_BaseHuman_Torso.glb" id="3_jo81g"]
+[ext_resource type="PackedScene" uid="uid://ujm4vy1eea0m" path="res://Models/SK_BaseHuman/SK_BaseHuman_Legs.glb" id="4_bofic"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6s0q4"]
-size = Vector3(1, 2.20117, 1)
+size = Vector3(1, 3.55811, 1)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_lu146"]
+[sub_resource type="Animation" id="Animation_achqr"]
+resource_name = "SK_BaseHumanAction"
+length = 0.833333
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("SK_BaseHuman/Skeleton3D:UpperLeg_R")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.384556, -0.102847, -0.239664, 0.885495, 0.0333333, 1, -0.38488, -0.101653, -0.236881, 0.88624, 0.0666667, 1, -0.387203, -0.0926033, -0.215792, 0.89159, 0.1, 1, -0.390951, -0.0756083, -0.176189, 0.900221, 0.133333, 1, -0.394895, -0.0517584, -0.120612, 0.909303, 0.166667, 1, -0.397696, -0.0224468, -0.052308, 0.91575, 0.2, 1, -0.398203, 0.0103971, 0.0242273, 0.916918, 0.233333, 1, -0.395815, 0.0443458, 0.103337, 0.911419, 0.266667, 1, -0.390714, 0.0768029, 0.178971, 0.899674, 0.3, 1, -0.383837, 0.105447, 0.245721, 0.883839, 0.333333, 1, -0.376592, 0.128526, 0.2995, 0.867156, 0.366667, 1, -0.370501, 0.144842, 0.337522, 0.853129, 0.4, 1, -0.366933, 0.153486, 0.357665, 0.844913, 0.433333, 1, -0.366895, 0.153575, 0.357871, 0.844826, 0.466667, 1, -0.370203, 0.145586, 0.339256, 0.852444, 0.5, 1, -0.375907, 0.130478, 0.304049, 0.865577, 0.533333, 1, -0.38281, 0.109046, 0.254107, 0.881473, 0.566667, 1, -0.389571, 0.0822995, 0.19178, 0.897041, 0.6, 1, -0.394903, 0.0517024, 0.12048, 0.90932, 0.633333, 1, -0.397868, 0.0192229, 0.0447941, 0.916147, 0.666667, 1, -0.398129, -0.0128618, -0.0299722, 0.916749, 0.7, 1, -0.396041, -0.0423207, -0.0986197, 0.91194, 0.733333, 1, -0.3925, -0.0672874, -0.156799, 0.903787, 0.766667, 1, -0.388669, -0.086373, -0.201274, 0.894966, 0.8, 1, -0.385704, -0.0985449, -0.229638, 0.888137, 0.833333, 1, -0.384556, -0.102847, -0.239664, 0.885495)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("SK_BaseHuman/Skeleton3D:LowerLeg_R")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.00214433, 0.000338783, -0.156068, 0.987744, 0.0333333, 1, 0.00214425, 0.00033929, -0.156302, 0.987707, 0.0666667, 1, 0.00214364, 0.000343089, -0.158052, 0.987428, 0.1, 1, 0.00214252, 0.000350018, -0.161244, 0.986912, 0.133333, 1, 0.00214097, 0.000359377, -0.165555, 0.986198, 0.166667, 1, 0.00213908, 0.000370467, -0.170664, 0.985327, 0.2, 1, 0.00213694, 0.00038259, -0.176249, 0.984343, 0.233333, 1, 0.00213468, 0.000395047, -0.181988, 0.983298, 0.266667, 1, 0.0021324, 0.000407144, -0.187561, 0.982251, 0.3, 1, 0.00213026, 0.000418189, -0.192649, 0.981265, 0.333333, 1, 0.00212842, 0.000427494, -0.196935, 0.980414, 0.366667, 1, 0.00212702, 0.000434373, -0.200104, 0.979772, 0.4, 1, 0.00212625, 0.000438141, -0.20184, 0.979416, 0.433333, 1, 0.0021263, 0.00043818, -0.201858, 0.979412, 0.466667, 1, 0.00212702, 0.000434694, -0.200252, 0.979742, 0.5, 1, 0.00212831, 0.000428302, -0.197308, 0.980339, 0.533333, 1, 0.00213005, 0.000419612, -0.193304, 0.981136, 0.566667, 1, 0.00213206, 0.000409229, -0.188521, 0.982067, 0.6, 1, 0.00213423, 0.000397763, -0.183239, 0.983066, 0.633333, 1, 0.00213642, 0.000385824, -0.177739, 0.984075, 0.666667, 1, 0.00213852, 0.000374027, -0.172305, 0.985041, 0.7, 1, 0.00214042, 0.000362988, -0.167219, 0.985917, 0.733333, 1, 0.00214204, 0.000353325, -0.162768, 0.986662, 0.766667, 1, 0.00214329, 0.000345658, -0.159236, 0.987238, 0.8, 1, 0.0021441, 0.000340604, -0.156907, 0.987611, 0.833333, 1, 0.00214433, 0.000338783, -0.156068, 0.987744)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("SK_BaseHuman/Skeleton3D:UpperLeg_L")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.36787, -0.151272, 0.352505, 0.847071, 0.0333333, 1, 0.368344, -0.150137, 0.349861, 0.848162, 0.0666667, 1, 0.371808, -0.141521, 0.329783, 0.856139, 0.1, 1, 0.377711, -0.125269, 0.29191, 0.86973, 0.133333, 1, 0.384704, -0.102306, 0.238401, 0.885834, 0.166667, 1, 0.391297, -0.073839, 0.172064, 0.901015, 0.2, 1, 0.396117, -0.0416173, 0.096979, 0.912115, 0.233333, 1, 0.398261, -0.00794162, 0.0185053, 0.917051, 0.266667, 1, 0.397564, 0.0246242, -0.0573821, 0.915447, 0.3, 1, 0.394633, 0.0536856, -0.125103, 0.908698, 0.333333, 1, 0.390607, 0.0773358, -0.180215, 0.899427, 0.366667, 1, 0.386812, 0.094193, -0.219497, 0.890688, 0.4, 1, 0.384467, 0.103172, -0.24042, 0.88529, 0.433333, 1, 0.384442, 0.103264, -0.240633, 0.885233, 0.466667, 1, 0.386619, 0.0949644, -0.221294, 0.890245, 0.5, 1, 0.390195, 0.0793463, -0.1849, 0.898479, 0.533333, 1, 0.394105, 0.057359, -0.133663, 0.907483, 0.566667, 1, 0.397174, 0.0301768, -0.0703211, 0.914548, 0.6, 1, 0.398341, -0.000592793, 0.00138053, 0.917236, 0.633333, 1, 0.396953, -0.0328992, 0.0766634, 0.91404, 0.666667, 1, 0.392982, -0.0644712, 0.150235, 0.904897, 0.7, 1, 0.387065, -0.0931699, 0.217111, 0.89127, 0.733333, 1, 0.380319, -0.117278, 0.273289, 0.875737, 0.766667, 1, 0.374062, -0.135574, 0.315924, 0.86133, 0.8, 1, 0.369559, -0.147181, 0.342972, 0.850961, 0.833333, 1, 0.36787, -0.151272, 0.352505, 0.847071)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("SK_BaseHuman/Skeleton3D:LowerLeg_L")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.00213262, -0.000406409, -0.187213, 0.982317, 0.0333333, 1, -0.00213269, -0.000406041, -0.187043, 0.982349, 0.0666667, 1, -0.00213321, -0.000403288, -0.185775, 0.98259, 0.1, 1, -0.00213416, -0.000398262, -0.18346, 0.983025, 0.133333, 1, -0.00213541, -0.000391467, -0.180329, 0.983604, 0.166667, 1, -0.00213688, -0.000383403, -0.176615, 0.984278, 0.2, 1, -0.00213844, -0.000374575, -0.172548, 0.984999, 0.233333, 1, -0.00214001, -0.000365488, -0.168362, 0.985723, 0.266667, 1, -0.00214151, -0.000356647, -0.164289, 0.98641, 0.3, 1, -0.00214284, -0.000348561, -0.160564, 0.987023, 0.333333, 1, -0.00214394, -0.000341738, -0.157421, 0.987529, 0.366667, 1, -0.00214473, -0.000336687, -0.155094, 0.987897, 0.4, 1, -0.00214517, -0.000333919, -0.153819, 0.988097, 0.433333, 1, -0.00214513, -0.000333891, -0.153806, 0.988099, 0.466667, 1, -0.00214473, -0.000336453, -0.154986, 0.987914, 0.5, 1, -0.00214398, -0.000341145, -0.157148, 0.987573, 0.533333, 1, -0.00214296, -0.000347518, -0.160083, 0.987101, 0.566667, 1, -0.00214171, -0.000355122, -0.163586, 0.986527, 0.6, 1, -0.00214031, -0.000363505, -0.167448, 0.985879, 0.633333, 1, -0.00213881, -0.000372218, -0.171462, 0.985188, 0.666667, 1, -0.00213729, -0.000380813, -0.175421, 0.984491, 0.7, 1, -0.00213585, -0.000388843, -0.17912, 0.983825, 0.733333, 1, -0.00213456, -0.000395862, -0.182354, 0.983231, 0.766667, 1, -0.00213352, -0.000401425, -0.184917, 0.982752, 0.8, 1, -0.00213283, -0.000405089, -0.186605, 0.982433, 0.833333, 1, -0.00213262, -0.000406409, -0.187213, 0.982317)
+
+[sub_resource type="Animation" id="Animation_1meje"]
+resource_name = "Idle"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SK_BaseHuman/Skeleton3D:UpperLeg_R")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.350048, 0.018228, 0.0370569, 0.935821)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SK_BaseHuman/Skeleton3D:LowerLeg_R")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.0465066, -0.00242767, -0.0460946, 0.997851)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SK_BaseHuman/Skeleton3D:Foot_R")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.000612417, 0.0754833, -0.000370563, 0.997147)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SK_BaseHuman/Skeleton3D:UpperLeg_L")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.349113, -1.3476e-07, -4.52918e-07, 0.937081)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SK_BaseHuman/Skeleton3D:LowerLeg_L")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.0459739, 0.0026699, -0.0478125, 0.997794)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SK_BaseHuman/Skeleton3D:Foot_L")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.00452834, -0.0987563, 0.044827, 0.994091)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6t8c1"]
+_data = {
+"Idle": SubResource("Animation_1meje"),
+"Run": SubResource("Animation_achqr")
+}
 
 [node name="PlayerCharacter" type="CharacterBody3D"]
 script = ExtResource("1_p62v6")
@@ -15,21 +98,25 @@ script = ExtResource("1_p62v6")
 script = ExtResource("2_tpwkx")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11986, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79833, 0)
 shape = SubResource("BoxShape3D_6s0q4")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 2.97569e-08, -8.22026e-08, -5.79977e-08, 0.477757, 0.878492, 6.5414e-08, 0.878492, -0.477757, 0, 16.3101, -6.87194)
+fov = 30.0
 
 [node name="Swivel" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519279, 0)
 
-[node name="CharacterMesh" type="MeshInstance3D" parent="Swivel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.491815, 0)
-mesh = SubResource("CapsuleMesh_lu146")
-skeleton = NodePath("../..")
+[node name="SK_BaseHuman_Torso" parent="Swivel" instance=ExtResource("3_jo81g")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="IndicatorMesh" type="MeshInstance3D" parent="Swivel"]
-transform = Transform3D(0.293099, 0, 0, 0, -0.0022063, -0.209358, 0, 0.995342, -0.000464067, 0, 0.491815, 0.740862)
-mesh = SubResource("CapsuleMesh_lu146")
-skeleton = NodePath("../..")
+[node name="Legs" type="Node3D" parent="."]
+
+[node name="SK_BaseHuman_Legs" parent="Legs" instance=ExtResource("4_bofic")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Legs"]
+root_node = NodePath("../SK_BaseHuman_Legs")
+libraries = {
+"": SubResource("AnimationLibrary_6t8c1")
+}

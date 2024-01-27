@@ -7,6 +7,11 @@ const GRAVITY = 20.0
 const RAYCAST_LENGTH = 1000.0
 
 
+var is_moving = false
+var legs_target = 0.0
+var legs_rotate_speed = 0.1
+
+
 # TODO - not hardcode movement keys
 func is_pressing_x_axis_keys() -> bool:
 	return Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_D)
@@ -27,6 +32,7 @@ func handle_movement_input(delta):
 	if is_pressing_z_axis_keys():
 		velocity.z = adjusted_speed if Input.is_key_pressed(KEY_W) else -adjusted_speed
 
+	is_moving = velocity.x or velocity.z
 	move_and_slide()
 
 
@@ -46,6 +52,30 @@ func handle_mouse_input():
 		new_rotation.y = atan2(hit_pos.x - $Swivel.global_transform.origin.x, hit_pos.z - $Swivel.global_transform.origin.z)
 		$Swivel.global_transform.basis = Basis().rotated(Vector3(0, 1, 0), new_rotation.y)
 
+
+func determine_legs_target():
+	if not is_moving:
+		$Legs.get_node("AnimationPlayer").play("Idle")
+		legs_target = rad_to_deg($Swivel.rotation.y)
+		legs_rotate_speed = 0.15
+	else:
+		var target_y = 0.0
+		$Legs.get_node("AnimationPlayer").play("Run")
+		
+		if velocity.x != 0:
+			target_y = 90 if velocity.x > 0 else 280
+			if velocity.z > 0:
+				target_y = 45 if velocity.x > 0 else 315
+			elif velocity.z < 0:
+				target_y = 135 if velocity.x > 0 else 225
+
+		legs_target = target_y
+		legs_rotate_speed = 0.1
+		
+
+func rotate_legs(delta):
+	$Legs.rotation.y = lerp_angle($Legs.rotation.y, deg_to_rad(legs_target), legs_rotate_speed)
+	
 
 func initialize():
 	$HealthComponent.connect("died", on_died, 0)
@@ -71,5 +101,7 @@ func _physics_process(delta):
 
 	handle_movement_input(delta)
 	handle_mouse_input()
+	determine_legs_target()
+	rotate_legs(delta)
 	move_and_slide()
 
