@@ -36,8 +36,7 @@ func handle_movement_input(delta):
 
 
 # this wasn't fun.
-# basically, get mouse position, raycast to world, get hit position, and rotate.
-func handle_mouse_input():
+func get_mouse_position_in_world() -> Vector3:
 	var space_state = get_world_3d().direct_space_state
 	var mouse_pos = get_viewport().get_mouse_position()
 	var raycast_source = $Camera3D.project_ray_origin(mouse_pos)
@@ -46,10 +45,19 @@ func handle_mouse_input():
 	var result = space_state.intersect_ray(query)
 	
 	if result:
-		var hit_pos = result.position
-		var new_rotation = $Swivel.global_transform.basis.get_euler()
-		new_rotation.y = atan2(hit_pos.x - $Swivel.global_transform.origin.x, hit_pos.z - $Swivel.global_transform.origin.z)
-		$Swivel.global_transform.basis = Basis().rotated(Vector3(0, 1, 0), new_rotation.y)
+		return result.position
+	else:
+		return Vector3()
+
+
+func handle_mouse_input():
+	var hit_pos = get_mouse_position_in_world()
+	var new_rotation = $Swivel.global_transform.basis.get_euler()
+	new_rotation.y = atan2(hit_pos.x - $Swivel.global_transform.origin.x, hit_pos.z - $Swivel.global_transform.origin.z)
+	$Swivel.global_transform.basis = Basis().rotated(Vector3(0, 1, 0), new_rotation.y)
+
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		$WeaponComponent.attack(hit_pos)
 
 
 func determine_legs_target():

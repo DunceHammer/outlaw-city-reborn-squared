@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2p11yehqnout"]
+[gd_scene load_steps=4 format=3 uid="uid://b2p11yehqnout"]
 
-[ext_resource type="Script" path="res://Components/WeaponStatComponent/WeaponStatComponent.gd" id="1_epxcx"]
+[ext_resource type="Script" path="res://Components/WeaponStatComponent.gd" id="1_epxcx"]
 [ext_resource type="PackedScene" uid="uid://bgn6a0ouy2vvq" path="res://Models/SM_StenGun/SM_StenGun.glb" id="2_28uxl"]
+[ext_resource type="PackedScene" uid="uid://dipbqv44afj7d" path="res://Prefabs/PROJ_StenGun/PROJ_StenGun.tscn" id="2_er84s"]
 
 [node name="WPN_StenGun" type="Node3D"]
 
@@ -9,7 +10,10 @@
 script = ExtResource("1_epxcx")
 idle_animation = "Idle_StenGun"
 walk_animation = "Idle_StenGun"
+weapon_projectile = ExtResource("2_er84s")
+weapon_projectile_start = Vector3(1.348, 0, 0)
 weapon_position = Vector3(1.9, 0.99, 0)
 weapon_rotation = Vector3(187, 0, 253.5)
+attack_cooldown = 0.1
 
 [node name="SM_StenGun" parent="." instance=ExtResource("2_28uxl")]

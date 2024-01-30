@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://s180d353on4b"]
+
+[ext_resource type="PackedScene" uid="uid://b7asfyecvyggv" path="res://Models/SK_BaseHuman/Animations/SK_BaseHuman_Anims.glb" id="1_0fgfa"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="1_afo0c"]
+[ext_resource type="Script" path="res://Prefabs/TrainingDummy/TrainingDummy.gd" id="1_unh8u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_13js3"]
+size = Vector3(1, 4.203, 1.79419)
+
+[node name="TrainingDummy" type="CharacterBody3D"]
+script = ExtResource("1_unh8u")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("1_afo0c")
+
+[node name="SK_BaseHuman_Anims" parent="." instance=ExtResource("1_0fgfa")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6015, 0.0684814)
+shape = SubResource("BoxShape3D_13js3")
