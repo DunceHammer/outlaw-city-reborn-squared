@@ -38,6 +38,3 @@ func _on_full_quit_pressed():
 func set_quit_confirmation_screen_visible(is_visible: bool):
 	$QuitConfirmation.visible = is_visible
 	$Menu.visible = !is_visible
-
-
-
