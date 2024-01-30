@@ -1,0 +1,96 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3mdyxi0rxpes"]
+
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_gvl7j"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_gvl7j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.223529, 0.615686, 1, 1)
+
+[node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 344.0
+offset_top = 272.0
+offset_right = 812.0
+offset_bottom = 339.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
+text = "After a long Hiatus..."
+
+[node name="Menu" type="Node2D" parent="."]
+visible = false
+
+[node name="Buttons" type="Node2D" parent="Menu"]
+
+[node name="Play" type="Button" parent="Menu/Buttons"]
+offset_left = 488.0
+offset_top = 264.0
+offset_right = 664.0
+offset_bottom = 352.0
+text = "Play Game"
+
+[node name="HalfQuit" type="Button" parent="Menu/Buttons"]
+offset_left = 1024.0
+offset_top = 584.0
+offset_right = 1144.0
+offset_bottom = 632.0
+text = "Quit
+"
+
+[node name="Label" type="Label" parent="Menu/Buttons"]
+offset_left = 296.0
+offset_top = 144.0
+offset_right = 838.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_font_sizes/font_size = 40
+text = "Outlaw City Reborn Squared"
+
+[node name="QuitConfirmation" type="Node2D" parent="."]
+visible = false
+
+[node name="CancelQuit" type="Button" parent="QuitConfirmation"]
+offset_left = 624.0
+offset_top = 264.0
+offset_right = 800.0
+offset_bottom = 352.0
+text = "NO WAY"
+
+[node name="FullQuit" type="Button" parent="QuitConfirmation"]
+offset_left = 392.0
+offset_top = 264.0
+offset_right = 568.0
+offset_bottom = 352.0
+text = "YES!!!!"
+
+[node name="Label" type="Label" parent="QuitConfirmation"]
+offset_left = 304.0
+offset_top = 128.0
+offset_right = 886.0
+offset_bottom = 192.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_font_sizes/font_size = 40
+text = "Are you sure you want to quit?"
+
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]
+[connection signal="pressed" from="Menu/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/Buttons/HalfQuit" to="." method="_on_half_quit_pressed"]
+[connection signal="pressed" from="QuitConfirmation/CancelQuit" to="." method="_on_cancel_quit_pressed"]
+[connection signal="pressed" from="QuitConfirmation/FullQuit" to="." method="_on_full_quit_pressed"]
