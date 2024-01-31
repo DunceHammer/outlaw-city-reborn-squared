@@ -10,17 +10,17 @@ var current_message
 
 func _ready():
 	current_message = 0
-	$Label.text = self.MESSAGES[0]
+	$Label.text = MESSAGES[0]
 
 
 func _on_transition_timer_timeout():
 	current_message += 1
-	if (current_message >=3):
+	if (current_message >= MESSAGES.size()):
 		$TransitionTimer.queue_free()
 		$Label.visible = false
 		$Menu.visible = true
 		return
-	$Label.text = self.MESSAGES[current_message]
+	$Label.text = MESSAGES[current_message]
 
 
 func _on_play_pressed():
