@@ -22,11 +22,18 @@ func _ready():
 func _process(_delta):
 	var weapon = player_character.get_node("WeaponComponent").equipped_weapon
 	var weapon_stats = weapon.get_node("WeaponStatComponent") if weapon else null
+	var block_torso = false
+
+	if weapon_stats and player_character.is_firing:
+		$AnimPlayer_Torso.play(weapon_stats.fire_animation)
+		block_torso = true
 
 	if player_character.is_moving:
-		$AnimPlayer_Torso.play(weapon_stats.walk_animation if weapon_stats else "Walk")
+		if not block_torso:
+			$AnimPlayer_Torso.play(weapon_stats.walk_animation if weapon_stats else "Walk")
 		$AnimPlayer_Legs.play("Walk")
 	else:
-		$AnimPlayer_Torso.play(weapon_stats.idle_animation if weapon_stats else "Default")
+		if not block_torso:
+			$AnimPlayer_Torso.play(weapon_stats.idle_animation if weapon_stats else "Default")
 		$AnimPlayer_Legs.play("Default")
 
