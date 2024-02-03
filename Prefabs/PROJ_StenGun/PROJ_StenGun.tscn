@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dipbqv44afj7d"]
+
+[ext_resource type="Script" path="res://Components/ProjectileComponent.gd" id="1_k0qcr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_10es1"]
+radius = 0.0973518
+
+[sub_resource type="SphereMesh" id="SphereMesh_nyc2b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfnt6"]
+albedo_color = Color(1, 0, 0.0156863, 1)
+
+[node name="PROJ_StenGun" type="Area3D"]
+
+[node name="ProjectileComponent" type="Node" parent="."]
+script = ExtResource("1_k0qcr")
+speed = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_10es1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_nyc2b")
+surface_material_override/0 = SubResource("StandardMaterial3D_bfnt6")

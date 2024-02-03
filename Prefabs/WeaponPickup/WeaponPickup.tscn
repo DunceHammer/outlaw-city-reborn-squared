@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://btydl5mrobo3c"]
+
+[ext_resource type="Script" path="res://Prefabs/WeaponPickup/WeaponPickup.gd" id="1_jitp0"]
+[ext_resource type="PackedScene" uid="uid://bgn6a0ouy2vvq" path="res://Models/SM_StenGun/SM_StenGun.glb" id="2_ikj0f"]
+[ext_resource type="Script" path="res://Scripts/SCRIPT_Rotate.gd" id="3_gfcyr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a51hk"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d8wej"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hdah8"]
+size = Vector3(1, 1.53462, 1)
+
+[node name="WeaponPickup" type="Area3D"]
+script = ExtResource("1_jitp0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.211911, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_a51hk")
+mesh = SubResource("BoxMesh_d8wej")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657265, 0)
+shape = SubResource("BoxShape3D_hdah8")
+
+[node name="SM_StenGun" parent="." instance=ExtResource("2_ikj0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0768326, 1.08411, 0)
+script = ExtResource("3_gfcyr")

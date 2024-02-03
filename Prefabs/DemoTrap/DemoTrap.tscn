@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccvajl0ibt7ci"]
+
+[ext_resource type="Script" path="res://Prefabs/DemoTrap/DemoTrap.gd" id="1_2ao31"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4yk3"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_25hy0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b8mgl"]
+size = Vector3(1, 1.53462, 1)
+
+[node name="DemoTrap" type="Area3D"]
+script = ExtResource("1_2ao31")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.211911, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_g4yk3")
+mesh = SubResource("BoxMesh_25hy0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657265, 0)
+shape = SubResource("BoxShape3D_b8mgl")

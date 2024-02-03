@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bthjldhww7v8r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxlfl"]
+albedo_color = Color(0.0862745, 0.682353, 0.988235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gg2eq"]
+
+[node name="ClickMarker" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.243391, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_kxlfl")
+mesh = SubResource("BoxMesh_gg2eq")
