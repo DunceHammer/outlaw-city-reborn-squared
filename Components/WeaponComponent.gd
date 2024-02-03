@@ -80,7 +80,6 @@ func attack(pos: Vector3):
 	projectile_component.fire(player)
 	_cooldown = get_equipped_weapon_stats().attack_cooldown
 	create_muzzle_flash()
-	var player = get_parent()
 	player.start_fire_timer(weapon_stats.fire_animation_duration)
 
 
