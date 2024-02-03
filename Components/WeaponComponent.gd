@@ -9,10 +9,6 @@ var equipped_weapon = null
 var _cooldown = 0.0
 
 
-func _ready():
-	pass
-
-
 func _process(delta: float):
 	if _cooldown > 0.0:
 		_cooldown -= delta
@@ -20,7 +16,6 @@ func _process(delta: float):
 
 func can_attack():
 	return _cooldown <= 0.0
-
 
 
 func get_weapon_stats(weapon: Node):

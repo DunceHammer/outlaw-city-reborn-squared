@@ -87,10 +87,6 @@ func rotate_legs(delta):
 	$Legs.rotation.y = lerp_angle($Legs.rotation.y, deg_to_rad(legs_target), legs_rotate_speed * (delta * 50))
 
 
-func _ready():
-	pass
-
-
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta

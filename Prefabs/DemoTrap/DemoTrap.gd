@@ -3,7 +3,6 @@ extends Area3D
 
 func _ready():
 	connect("body_entered", on_body_entered, 0)
-	pass
 
 
 func on_body_entered(body):
