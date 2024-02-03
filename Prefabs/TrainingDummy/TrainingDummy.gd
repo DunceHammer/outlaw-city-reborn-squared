@@ -11,4 +11,6 @@ func _on_damaged(_damage: int):
 
 
 func _on_died():
+	var player = get_node("/root").get_child(0).get_node("PlayerCharacter")
+	player.get_node("PointsComponent").add_points(50)
 	queue_free()

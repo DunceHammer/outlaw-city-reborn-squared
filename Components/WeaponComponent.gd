@@ -41,6 +41,9 @@ func get_equipped_weapon_stats():
 
 
 func attack(pos: Vector3):
+	var player = get_parent()
+	assert(player.name == "PlayerCharacter")
+
 	if equipped_weapon == null or not can_attack():
 		return
 
@@ -57,9 +60,9 @@ func attack(pos: Vector3):
 	# this is obnoxiously hacky but basically I can't do vector math well enough so
 	# instead I parent it to the weapon initially to get the position right, then
 	# reparent it to the root node so it doesn't move with the weapon
-	projectile_instance.reparent(get_node("/root"))
+	projectile_instance.reparent(get_node("/root").get_child(0))
 	projectile_component.set_target(pos)
-	projectile_component.fire()
+	projectile_component.fire(player)
 	_cooldown = get_equipped_weapon_stats().attack_cooldown
 
 

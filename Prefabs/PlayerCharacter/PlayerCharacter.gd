@@ -9,6 +9,7 @@ const RAYCAST_LENGTH = 1000.0
 var is_moving = false
 var legs_target = 0.0
 var legs_rotate_speed = 0.1
+var selected_interactable = null
 
 
 # TODO - not hardcode movement keys
@@ -35,29 +36,41 @@ func handle_movement_input(delta):
 	move_and_slide()
 
 
-# this wasn't fun.
-func get_mouse_position_in_world() -> Vector3:
+func handle_interaction_input():
+	if Input.is_key_pressed(KEY_E) and selected_interactable:
+		if selected_interactable.get_node("InteractableComponent").try_interact(self):
+			selected_interactable = null
+
+
+func get_object_under_mouse() -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
 	var mouse_pos = get_viewport().get_mouse_position()
 	var raycast_source = $Camera3D.project_ray_origin(mouse_pos)
 	var raycast_dest = raycast_source + $Camera3D.project_ray_normal(mouse_pos) * RAYCAST_LENGTH
 	var query = PhysicsRayQueryParameters3D.create(raycast_source, raycast_dest)
-	var result = space_state.intersect_ray(query)
-	
-	if result:
-		return result.position
-	else:
-		return Vector3()
+	return space_state.intersect_ray(query)
+
+
+func rotate_swivel_to_position(pos: Vector3):
+	var new_rotation = $Swivel.global_transform.basis.get_euler()
+	new_rotation.y = atan2(pos.x - $Swivel.global_transform.origin.x, pos.z - $Swivel.global_transform.origin.z)
+	$Swivel.global_transform.basis = Basis().rotated(Vector3(0, 1, 0), new_rotation.y)
 
 
 func handle_mouse_input():
-	var hit_pos = get_mouse_position_in_world()
-	var new_rotation = $Swivel.global_transform.basis.get_euler()
-	new_rotation.y = atan2(hit_pos.x - $Swivel.global_transform.origin.x, hit_pos.z - $Swivel.global_transform.origin.z)
-	$Swivel.global_transform.basis = Basis().rotated(Vector3(0, 1, 0), new_rotation.y)
+	var hit = get_object_under_mouse()
+	if hit:
+		var hit_object = hit.collider
 
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		$WeaponComponent.attack(hit_pos)
+		if hit_object.has_node("InteractableComponent"):
+			selected_interactable = hit_object
+		else:
+			selected_interactable = null
+
+		rotate_swivel_to_position(hit.position)
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			$WeaponComponent.attack(hit.position)
+		
 
 
 func determine_legs_target():
@@ -93,6 +106,7 @@ func _physics_process(delta):
 
 	handle_movement_input(delta)
 	handle_mouse_input()
+	handle_interaction_input()
 	determine_legs_target()
 	rotate_legs(delta)
 	move_and_slide()
