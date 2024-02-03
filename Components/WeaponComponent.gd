@@ -40,6 +40,21 @@ func get_equipped_weapon_stats():
 	return weapon_stats
 
 
+func create_muzzle_flash():
+	if equipped_weapon == null:
+		return
+
+	var weapon_stats = get_equipped_weapon_stats()
+	assert(weapon_stats.muzzle_flash != null, "MuzzleFlash not set")
+
+	var muzzle_flash_instance = weapon_stats.muzzle_flash.instantiate()
+	muzzle_flash_instance.position = weapon_stats.muzzle_flash_position
+	muzzle_flash_instance.rotation_degrees = weapon_stats.muzzle_flash_rotation
+	muzzle_flash_instance.scale = weapon_stats.muzzle_flash_scale
+	equipped_weapon.add_child(muzzle_flash_instance)
+
+
+
 func attack(pos: Vector3):
 	var player = get_parent()
 	assert(player.name == "PlayerCharacter")
@@ -64,6 +79,9 @@ func attack(pos: Vector3):
 	projectile_component.set_target(pos)
 	projectile_component.fire(player)
 	_cooldown = get_equipped_weapon_stats().attack_cooldown
+	create_muzzle_flash()
+	var player = get_parent()
+	player.start_fire_timer(weapon_stats.fire_animation_duration)
 
 
 func equip(weapon: PackedScene):

@@ -7,9 +7,16 @@ const RAYCAST_LENGTH = 1000.0
 
 
 var is_moving = false
+var is_firing = false
+var fire_time = 0.0
 var legs_target = 0.0
 var legs_rotate_speed = 0.1
 var selected_interactable = null
+
+
+func start_fire_timer(time: float):
+	is_firing = true
+	fire_time = time
 
 
 # TODO - not hardcode movement keys
@@ -104,6 +111,11 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
 
+	if is_firing:
+		fire_time -= delta
+		if fire_time <= 0:
+			is_firing = false
+	
 	handle_movement_input(delta)
 	handle_mouse_input()
 	handle_interaction_input()

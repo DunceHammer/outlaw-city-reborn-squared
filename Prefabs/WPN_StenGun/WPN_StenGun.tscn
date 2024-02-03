@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2p11yehqnout"]
+[gd_scene load_steps=5 format=3 uid="uid://b2p11yehqnout"]
 
 [ext_resource type="Script" path="res://Components/WeaponStatComponent.gd" id="1_epxcx"]
-[ext_resource type="PackedScene" uid="uid://bgn6a0ouy2vvq" path="res://Models/SM_StenGun/SM_StenGun.glb" id="2_28uxl"]
 [ext_resource type="PackedScene" uid="uid://dipbqv44afj7d" path="res://Prefabs/PROJ_StenGun/PROJ_StenGun.tscn" id="2_er84s"]
+[ext_resource type="PackedScene" uid="uid://qa5kw8rq7omo" path="res://Prefabs/FLASH_StenGun/FLASH_StenGun.tscn" id="3_0t6cg"]
+[ext_resource type="PackedScene" uid="uid://bcgoqgihk4j1l" path="res://Models/SM_StenGunBlocky/SM_StenGunBlocky.glb" id="3_bcldx"]
 
 [node name="WPN_StenGun" type="Node3D"]
 
@@ -10,10 +11,14 @@
 script = ExtResource("1_epxcx")
 idle_animation = "Idle_StenGun"
 walk_animation = "Idle_StenGun"
+fire_animation = "Fire_StenGun"
 weapon_projectile = ExtResource("2_er84s")
 weapon_projectile_start = Vector3(1.348, 0, 0)
 weapon_position = Vector3(1.9, 0.99, 0)
 weapon_rotation = Vector3(187, 0, 253.5)
 attack_cooldown = 0.1
+muzzle_flash = ExtResource("3_0t6cg")
+muzzle_flash_position = Vector3(1.26605, 0, 0)
+muzzle_flash_scale = Vector3(4.05021, 2.21508, 2.21508)
 
-[node name="SM_StenGun" parent="." instance=ExtResource("2_28uxl")]
+[node name="SM_StenGunBlocky" parent="." instance=ExtResource("3_bcldx")]
