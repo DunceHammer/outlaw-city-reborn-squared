@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://s180d353on4b"]
+[gd_scene load_steps=6 format=3 uid="uid://s180d353on4b"]
 
 [ext_resource type="PackedScene" uid="uid://b7asfyecvyggv" path="res://Models/SK_BaseHuman/Animations/SK_BaseHuman_Anims.glb" id="1_0fgfa"]
 [ext_resource type="Script" path="res://Components/HealthComponent.gd" id="1_afo0c"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_13js3"]
 size = Vector3(1, 4.203, 1.79419)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqqwd"]
+size = Vector3(1.46448, 4.1665, 2.24609)
 
 [node name="TrainingDummy" type="CharacterBody3D"]
 script = ExtResource("1_unh8u")
@@ -18,3 +21,15 @@ script = ExtResource("1_afo0c")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6015, 0.0684814)
 shape = SubResource("BoxShape3D_13js3")
+
+[node name="PlayerCollision" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00421143, 1.58325, 0.119995)
+shape = SubResource("BoxShape3D_aqqwd")
+
+[node name="EnemyAttackCooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="PlayerCollision" to="." method="_on_player_collision_body_entered"]
+[connection signal="body_exited" from="PlayerCollision" to="." method="_on_player_collision_body_exited"]
+[connection signal="timeout" from="EnemyAttackCooldown" to="." method="_on_enemy_attack_cooldown_timeout"]

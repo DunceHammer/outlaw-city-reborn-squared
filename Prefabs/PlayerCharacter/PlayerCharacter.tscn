@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://k4aky2wyyeb8"]
+[gd_scene load_steps=17 format=3 uid="uid://k4aky2wyyeb8"]
 
 [ext_resource type="Script" path="res://Prefabs/PlayerCharacter/PlayerCharacter.gd" id="1_p62v6"]
 [ext_resource type="Script" path="res://Prefabs/PlayerAnimHandler/PlayerAnimHandler.gd" id="2_cuim5"]
 [ext_resource type="Script" path="res://Components/WeaponComponent.gd" id="2_lb7y2"]
 [ext_resource type="AnimationLibrary" uid="uid://dy46cle0hnqdn" path="res://Models/SK_BaseHuman/Animations/ALIB_BaseHuman.res" id="3_ewlba"]
 [ext_resource type="PackedScene" uid="uid://ujm4vy1eea0m" path="res://Models/SK_BaseHuman/SK_BaseHuman_Legs.glb" id="4_bofic"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="6_4ptlo"]
 
 [sub_resource type="Animation" id="Animation_51wkc"]
 resource_name = "Idle"
@@ -542,3 +543,6 @@ bone_name = "Hand_R"
 bone_idx = 8
 use_external_skeleton = true
 external_skeleton = NodePath("../Swivel/SK_BaseHuman_Torso/SK_BaseHuman/Skeleton3D")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("6_4ptlo")

@@ -10,6 +10,9 @@ var is_moving = false
 var legs_target = 0.0
 var legs_rotate_speed = 0.1
 
+func _ready():
+	$HealthComponent.damaged.connect(_on_damaged,0)
+	$HealthComponent.died.connect(_on_died,0)
 
 # TODO - not hardcode movement keys
 func is_pressing_x_axis_keys() -> bool:
@@ -97,3 +100,9 @@ func _physics_process(delta):
 	rotate_legs(delta)
 	move_and_slide()
 
+func _on_damaged(_damage: int):
+	print("Health: " + str($HealthComponent.health) + "/" + str($HealthComponent.max_health))
+
+
+func _on_died():
+	queue_free()
