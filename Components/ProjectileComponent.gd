@@ -7,6 +7,7 @@ class_name ProjectileComponent
 @export var lifetime = 5
 var _target = Vector3(0,0,0)
 var _parent = null
+var _shooter = null
 
 
 func set_target(target):
@@ -19,9 +20,10 @@ func rotation_to_target(target: Vector3) -> Vector3:
 	return new_rotation
 
 
-func fire():
+func fire(shooter: Node3D = null):
 	var new_rotation = rotation_to_target(_target)
 	_parent.global_transform.basis = Basis().rotated(Vector3(0, 1, 0), new_rotation.y)
+	_shooter = shooter
 
 
 func _ready():
@@ -38,6 +40,6 @@ func _process(delta):
 
 
 func on_body_entered(body):
-	if (body.has_node("HealthComponent")):
+	if (body.has_node("HealthComponent") and body != _shooter):
 		body.get_node("HealthComponent").damage(damage)
 		_parent.queue_free()

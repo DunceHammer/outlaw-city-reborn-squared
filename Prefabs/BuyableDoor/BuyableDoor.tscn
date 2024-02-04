@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://df52hkfojajhn"]
+
+[ext_resource type="Script" path="res://Components/InteractableComponent.gd" id="1_24ejg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixpre"]
+albedo_color = Color(0.458824, 0.27451, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lrdbu"]
+material = SubResource("StandardMaterial3D_ixpre")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iff8q"]
+size = Vector3(3.11321, 4.2533, 0.24707)
+
+[node name="BuyableDoor" type="StaticBody3D"]
+
+[node name="InteractableComponent" type="Node" parent="."]
+script = ExtResource("1_24ejg")
+text = "Open door ($PRICE)"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.97062, 0, 0, 0, 4.25276, 0, 0, 0, 0.194612, 0, 2.14625, 0)
+mesh = SubResource("BoxMesh_lrdbu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00421715, 2.15533, 0.0112305)
+shape = SubResource("BoxShape3D_iff8q")

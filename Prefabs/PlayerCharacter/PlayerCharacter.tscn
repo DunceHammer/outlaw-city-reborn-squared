@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://k4aky2wyyeb8"]
+[gd_scene load_steps=18 format=3 uid="uid://k4aky2wyyeb8"]
 
 [ext_resource type="Script" path="res://Prefabs/PlayerCharacter/PlayerCharacter.gd" id="1_p62v6"]
+[ext_resource type="Script" path="res://Components/PointsComponent.gd" id="2_7gebl"]
 [ext_resource type="Script" path="res://Prefabs/PlayerAnimHandler/PlayerAnimHandler.gd" id="2_cuim5"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="2_ed5kr"]
 [ext_resource type="Script" path="res://Components/WeaponComponent.gd" id="2_lb7y2"]
 [ext_resource type="AnimationLibrary" uid="uid://dy46cle0hnqdn" path="res://Models/SK_BaseHuman/Animations/ALIB_BaseHuman.res" id="3_ewlba"]
 [ext_resource type="PackedScene" uid="uid://ujm4vy1eea0m" path="res://Models/SK_BaseHuman/SK_BaseHuman_Legs.glb" id="4_bofic"]
@@ -339,6 +341,12 @@ bind/20/pose = Transform3D(-6.66667, 0, 8.95392e-06, -1.49666e-12, -6.66666, 1.5
 
 [node name="PlayerCharacter" type="CharacterBody3D"]
 script = ExtResource("1_p62v6")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_ed5kr")
+
+[node name="PointsComponent" type="Node" parent="."]
+script = ExtResource("2_7gebl")
 
 [node name="WeaponComponent" type="Node" parent="." node_paths=PackedStringArray("weapon_parent")]
 script = ExtResource("2_lb7y2")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://qa5kw8rq7omo"]
+
+[ext_resource type="PackedScene" uid="uid://bytw46y144eit" path="res://Models/SM_MuzzleFlash/SM_MuzzleFlash.glb" id="1_fsj25"]
+[ext_resource type="Script" path="res://Prefabs/FLASH_StenGun/FLASH_StenGun.gd" id="1_rhghg"]
+
+[node name="FLASH_StenGun" type="Node3D"]
+script = ExtResource("1_rhghg")
+
+[node name="SM_MuzzleFlash" parent="." instance=ExtResource("1_fsj25")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0, 1)
+light_energy = 0.377
