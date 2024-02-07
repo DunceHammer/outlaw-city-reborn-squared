@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://k4aky2wyyeb8"]
+[gd_scene load_steps=18 format=3 uid="uid://k4aky2wyyeb8"]
 
 [ext_resource type="Script" path="res://Prefabs/PlayerCharacter/PlayerCharacter.gd" id="1_p62v6"]
+[ext_resource type="Script" path="res://Components/PointsComponent.gd" id="2_7gebl"]
 [ext_resource type="Script" path="res://Prefabs/PlayerAnimHandler/PlayerAnimHandler.gd" id="2_cuim5"]
+[ext_resource type="Script" path="res://Components/HealthComponent.gd" id="2_ed5kr"]
 [ext_resource type="Script" path="res://Components/WeaponComponent.gd" id="2_lb7y2"]
 [ext_resource type="AnimationLibrary" uid="uid://dy46cle0hnqdn" path="res://Models/SK_BaseHuman/Animations/ALIB_BaseHuman.res" id="3_ewlba"]
 [ext_resource type="PackedScene" uid="uid://ujm4vy1eea0m" path="res://Models/SK_BaseHuman/SK_BaseHuman_Legs.glb" id="4_bofic"]
@@ -243,8 +245,8 @@ _data = {
 "Run": SubResource("Animation_achqr")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6s0q4"]
-size = Vector3(1, 3.55811, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i68pw"]
+height = 4.07921
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6ada"]
 resource_name = "Material.001"
@@ -341,6 +343,12 @@ bind/20/pose = Transform3D(-6.66667, 0, 8.95392e-06, -1.49666e-12, -6.66666, 1.5
 [node name="PlayerCharacter" type="CharacterBody3D"]
 script = ExtResource("1_p62v6")
 
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_ed5kr")
+
+[node name="PointsComponent" type="Node" parent="."]
+script = ExtResource("2_7gebl")
+
 [node name="WeaponComponent" type="Node" parent="." node_paths=PackedStringArray("weapon_parent")]
 script = ExtResource("2_lb7y2")
 weapon_parent = NodePath("../BoneAttachment3D")
@@ -366,7 +374,7 @@ playback_default_blend_time = 1.0
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79833, 0)
-shape = SubResource("BoxShape3D_6s0q4")
+shape = SubResource("CapsuleShape3D_i68pw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 2.97569e-08, -8.22026e-08, -5.79977e-08, 0.477757, 0.878492, 6.5414e-08, 0.878492, -0.477757, 0, 16.3101, -6.87194)

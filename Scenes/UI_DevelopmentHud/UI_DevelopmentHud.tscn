@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://ykj5wtgsgpqm"]
+
+[ext_resource type="Script" path="res://Scenes/UI_DevelopmentHud/UI_DevelopmentHud.gd" id="1_yr8bp"]
+
+[sub_resource type="Theme" id="Theme_ujk3q"]
+
+[node name="UI_DevelopmentHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yr8bp")
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 122.0
+offset_bottom = 23.0
+theme = SubResource("Theme_ujk3q")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Health: 100/100
+"
+
+[node name="PointsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 275.0
+offset_bottom = 90.0
+theme = SubResource("Theme_ujk3q")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Points: 100
+"
+
+[node name="InteractionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = 38.0
+offset_right = 137.5
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ujk3q")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Hello, World!"
+horizontal_alignment = 1
+vertical_alignment = 1
