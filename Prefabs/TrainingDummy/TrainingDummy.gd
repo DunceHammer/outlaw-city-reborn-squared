@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const PLAYER_PATH = "../PlayerCharacter"
+const PLAYER_PATH = "../../PlayerCharacter"
 const ENEMY_SPEED = 3
 const ENEMY_ATTACK_WAIT_TIME = 2
 const ENEMY_DAMAGE = 25
