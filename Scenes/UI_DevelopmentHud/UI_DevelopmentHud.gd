@@ -23,4 +23,3 @@ func _process(_delta):
 
 	$HealthLabel.text = "Health: " + str(health_component.health) + " / " + str(health_component.max_health)
 	$PointsLabel.text = "Points: " + str(points_component.points)
-

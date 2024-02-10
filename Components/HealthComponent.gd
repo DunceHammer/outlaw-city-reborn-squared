@@ -24,7 +24,3 @@ func damage(damage_amount: int):
 	if health < 0:
 		health = 0
 
-
-func _ready():
-	print("HealthComponent ready")
-

@@ -6,7 +6,10 @@ const MESSAGES = [
 "Outlaw City Reborn *Squared*!!!"
 ]
 const GAME_SCENE = "res://Maps/map_development.tscn"
+
+
 var current_message
+
 
 func _ready():
 	current_message = 0
