@@ -23,3 +23,12 @@ func _process(_delta):
 
 	$HealthLabel.text = "Health: " + str(health_component.health) + " / " + str(health_component.max_health)
 	$PointsLabel.text = "Points: " + str(points_component.points)
+
+
+func _on_enemies_round_increased(current_round):
+	$Round.set("theme_override_colors/font_color",Color(150,0,0,1))
+	$Round.text = str(current_round)
+
+
+func _on_enemies_round_cooldown():
+	$Round.set("theme_override_colors/font_color",Color(255,255,255,1))
