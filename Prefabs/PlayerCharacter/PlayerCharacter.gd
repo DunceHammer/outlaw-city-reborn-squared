@@ -131,4 +131,4 @@ func _on_damaged(_damage: int):
 
 
 func _on_died():
-	queue_free()
+	get_tree().change_scene_to_file("res://Scenes/death_menu.tscn")
