@@ -1,13 +1,16 @@
 extends CharacterBody3D
 
+
 const PLAYER_PATH = "../../PlayerCharacter"
-const ENEMY_SPEED = 3
 const ENEMY_ATTACK_WAIT_TIME = 2
 const ENEMY_DAMAGE = 25
 
+
+var enemy_speed = 1
 var player
 var animation
 var is_colliding_with_player = false
+
 
 func _ready():
 	$HealthComponent.died.connect(_on_died,0)
@@ -16,7 +19,7 @@ func _ready():
 func _physics_process(delta):
 	player = get_node(PLAYER_PATH)
 	var enemy_direction = (player.position - self.position).normalized()
-	velocity = enemy_direction * ENEMY_SPEED
+	velocity = enemy_direction * enemy_speed
 	move_and_slide()
 
 
