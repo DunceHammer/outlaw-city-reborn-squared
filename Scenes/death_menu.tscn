@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7pdwhj5xousu"]
+
+[ext_resource type="Script" path="res://Scenes/death_menu.gd" id="1_hdtsy"]
+
+[node name="DeathMenu" type="Node2D"]
+script = ExtResource("1_hdtsy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.223529, 0.615686, 1, 1)
+
+[node name="Menu" type="Node2D" parent="."]
+
+[node name="Menu" type="Button" parent="Menu"]
+offset_left = 624.0
+offset_top = 264.0
+offset_right = 800.0
+offset_bottom = 352.0
+text = "Main Menu"
+
+[node name="Play" type="Button" parent="Menu"]
+offset_left = 392.0
+offset_top = 264.0
+offset_right = 568.0
+offset_bottom = 352.0
+text = "Play Again"
+
+[node name="Label" type="Label" parent="Menu"]
+offset_left = 420.0
+offset_top = 178.0
+offset_right = 1002.0
+offset_bottom = 242.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_font_sizes/font_size = 40
+text = "You lost this time."
+
+[connection signal="pressed" from="Menu/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Menu/Play" to="." method="_on_play_pressed"]
