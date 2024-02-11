@@ -6,21 +6,20 @@ class_name PointsComponent
 
 
 func can_afford(cost: int) -> bool:
-    return points >= cost
+	return points >= cost
 
 
 func add_points(amount: int):
-    points += amount
+	points += amount
 
 
 func spend_points(cost: int):
-    points -= cost
+	points -= cost
 
 
 func try_spend_points(cost: int) -> bool:
-    if can_afford(cost):
-        spend_points(cost)
-        return true
+	if can_afford(cost):
+		spend_points(cost)
+		return true
 
-    return false
-
+	return false

@@ -10,6 +10,5 @@ func _ready():
 
 func on_body_entered(body):
 	if body.has_node("WeaponComponent"):
-		print("Picking up weapon")
 		body.get_node("WeaponComponent").equip(weapon)
 		queue_free()

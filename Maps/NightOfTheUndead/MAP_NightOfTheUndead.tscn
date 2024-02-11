@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvd5fk8237gkp"]
+[gd_scene load_steps=21 format=3 uid="uid://bvd5fk8237gkp"]
 
 [ext_resource type="PackedScene" uid="uid://dpfndro2upgsp" path="res://Maps/NightOfTheUndead/Assets/SM_NightOfTheUndead.glb" id="1_you0s"]
 [ext_resource type="PackedScene" uid="uid://k4aky2wyyeb8" path="res://Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="2_y35rs"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ykj5wtgsgpqm" path="res://Scenes/UI_DevelopmentHud/UI_DevelopmentHud.tscn" id="8_2ptce"]
 [ext_resource type="CompressedTexture3D" uid="uid://d34ub26m3bb5" path="res://Maps/NightOfTheUndead/Assets/TEX_FogMask.png" id="9_bnxql"]
 [ext_resource type="CompressedTexture3D" uid="uid://4k1vtixdhp4c" path="res://Maps/NightOfTheUndead/Assets/TEX_FogMaskInverted.png" id="9_wcsqs"]
+[ext_resource type="Script" path="res://Maps/NightOfTheUndead/Enemies.gd" id="11_h3ply"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ykafg"]
 sky_top_color = Color(0.0862745, 0.0980392, 0.172549, 1)
@@ -66,7 +67,7 @@ environment = SubResource("Environment_6mr4l")
 transform = Transform3D(-4.80825e-08, 0, 1.1, 0, 1.1, 0, -1.1, 0, -4.80825e-08, -0.437709, 0, 0.0868774)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_y35rs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.344985, -0.255912, 5.45624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0813923, -0.255912, -14.989)
 
 [node name="WeaponPickup" parent="." instance=ExtResource("3_cg45j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.851124, -0.255916, 2.53156)
@@ -139,3 +140,18 @@ material = SubResource("FogMaterial_663bv")
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -16.1728, -0.31871, -1.80531)
 size = Vector3(190, 190, 46.88)
 material = SubResource("FogMaterial_rwgp7")
+
+[node name="Enemies" type="Node3D" parent="."]
+script = ExtResource("11_h3ply")
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="RoundCooldownTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="child_order_changed" from="Enemies" to="Enemies" method="_on_child_order_changed"]
+[connection signal="round_cooldown" from="Enemies" to="UI_DevelopmentHud" method="_on_enemies_round_cooldown"]
+[connection signal="round_increased" from="Enemies" to="UI_DevelopmentHud" method="_on_enemies_round_increased"]
+[connection signal="timeout" from="EnemySpawnTimer" to="Enemies" method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="RoundCooldownTimer" to="Enemies" method="_on_round_cooldown_timer_timeout"]
