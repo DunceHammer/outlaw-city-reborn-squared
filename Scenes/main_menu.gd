@@ -5,8 +5,8 @@ const MESSAGES = [
 "DunceHammer Return With...", 
 "Outlaw City Reborn *Squared*!!!"
 ]
-const GAME_SCENE = "res://Maps/map_development.tscn"
 
+const GAME_SCENE = "res://Maps/NightOfTheUndead/MAP_NightOfTheUndead.tscn"
 
 var current_message
 
