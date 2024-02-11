@@ -29,7 +29,7 @@ func fire(shooter: Node3D = null):
 func _ready():
 	_parent = get_parent()
 	_parent.connect("body_entered", on_body_entered, 0)
-	
+
 
 func _process(delta):
 	lifetime -= delta
