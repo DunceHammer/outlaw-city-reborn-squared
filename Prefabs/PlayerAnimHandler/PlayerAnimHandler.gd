@@ -36,4 +36,3 @@ func _process(_delta):
 		if not block_torso:
 			$AnimPlayer_Torso.play(weapon_stats.idle_animation if weapon_stats else "Default")
 		$AnimPlayer_Legs.play("Default")
-
