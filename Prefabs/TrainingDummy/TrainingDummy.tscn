@@ -15,6 +15,7 @@ script = ExtResource("1_unh8u")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("1_afo0c")
+health = 25
 
 [node name="SK_BaseHuman_Anims" parent="." instance=ExtResource("1_0fgfa")]
 

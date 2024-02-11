@@ -32,4 +32,3 @@ func _on_enemies_round_increased(current_round):
 
 func _on_enemies_round_cooldown():
 	$Round.set("theme_override_colors/font_color",Color(255,255,255,1))
-
