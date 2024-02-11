@@ -129,4 +129,4 @@ func _physics_process(delta):
 
 
 func _on_died():
-	queue_free()
+	get_tree().change_scene_to_file("res://Scenes/death_menu.tscn")

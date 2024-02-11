@@ -155,3 +155,4 @@ wait_time = 3.0
 [connection signal="round_increased" from="Enemies" to="UI_DevelopmentHud" method="_on_enemies_round_increased"]
 [connection signal="timeout" from="EnemySpawnTimer" to="Enemies" method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="RoundCooldownTimer" to="Enemies" method="_on_round_cooldown_timer_timeout"]
+
