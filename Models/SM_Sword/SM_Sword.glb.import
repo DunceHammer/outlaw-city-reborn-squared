@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dondofy4j5hsv"
-path="res://.godot/imported/SK_BaseHuman_Anims.glb-68c002804c1d4b8ec9586448424ad7b0.scn"
+uid="uid://hvt6ni6tkbeu"
+path="res://.godot/imported/SM_Sword.glb-190fbddb56df1597d1650a3976834cca.scn"
 
 [deps]
 
-source_file="res://Models/SK_BaseHuman/Animations/SK_BaseHuman_Anims.glb"
-dest_files=["res://.godot/imported/SK_BaseHuman_Anims.glb-68c002804c1d4b8ec9586448424ad7b0.scn"]
+source_file="res://Models/SM_Sword/SM_Sword.glb"
+dest_files=["res://.godot/imported/SM_Sword.glb-190fbddb56df1597d1650a3976834cca.scn"]
 
 [params]
 

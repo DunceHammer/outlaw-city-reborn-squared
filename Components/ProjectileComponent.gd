@@ -5,9 +5,11 @@ class_name ProjectileComponent
 @export var speed = 25
 @export var damage = 5
 @export var lifetime = 5
+@export var destroy_on_hit = true
 var _target = Vector3(0,0,0)
 var _parent = null
 var _shooter = null
+var _hit_list = {}
 
 
 func set_target(target):
@@ -40,6 +42,12 @@ func _process(delta):
 
 
 func on_body_entered(body):
+	if body in _hit_list:
+		return
+		
 	if (body.has_node("HealthComponent") and body != _shooter):
 		body.get_node("HealthComponent").damage(damage)
-		_parent.queue_free()
+		if destroy_on_hit:
+			_parent.queue_free()
+		else:
+			_hit_list[body] = true

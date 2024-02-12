@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 
+@export var player_character : Node3D = null
 const PLAYER_PATH = "../../PlayerCharacter"
 const ENEMY_ATTACK_WAIT_TIME = 2
 const ENEMY_DAMAGE = 25
@@ -17,7 +18,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	player = get_node(PLAYER_PATH)
+	player = get_node(PLAYER_PATH) if not player_character else player_character
 	var enemy_direction = (player.position - self.position).normalized()
 	velocity = enemy_direction * enemy_speed
 	move_and_slide()

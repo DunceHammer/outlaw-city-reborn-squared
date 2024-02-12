@@ -72,10 +72,9 @@ func attack(pos: Vector3):
 	projectile_instance.position = weapon_stats.weapon_projectile_start
 	equipped_weapon.add_child(projectile_instance)
 
-	# this is obnoxiously hacky but basically I can't do vector math well enough so
-	# instead I parent it to the weapon initially to get the position right, then
-	# reparent it to the root node so it doesn't move with the weapon
-	projectile_instance.reparent(get_node("/root").get_child(0))
+	if not weapon_stats.attach_projectile:
+		projectile_instance.reparent(get_node("/root").get_child(0))
+	
 	projectile_component.set_target(pos)
 	projectile_component.fire(player)
 	_cooldown = get_equipped_weapon_stats().attack_cooldown

@@ -1,12 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://b16mdqiny05d5"]
+[gd_scene load_steps=20 format=3 uid="uid://b16mdqiny05d5"]
 
 [ext_resource type="PackedScene" uid="uid://b2p11yehqnout" path="res://Prefabs/WPN_StenGun/WPN_StenGun.tscn" id="2_fy5dt"]
 [ext_resource type="PackedScene" uid="uid://btydl5mrobo3c" path="res://Prefabs/WeaponPickup/WeaponPickup.tscn" id="3_0ds5x"]
 [ext_resource type="PackedScene" uid="uid://6hnuaoqkov30" path="res://Prefabs/WPN_GrandpaRifle/WPN_GrandpaRifle.tscn" id="3_451mj"]
 [ext_resource type="Script" path="res://Components/InteractableComponent.gd" id="5_aunb4"]
-[ext_resource type="PackedScene" uid="uid://k4aky2wyyeb8" path="res://Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="5_m2i1u"]
 [ext_resource type="Script" path="res://Prefabs/BuyableDoor/BuyableDoor.gd" id="5_yypdd"]
 [ext_resource type="PackedScene" uid="uid://ykj5wtgsgpqm" path="res://Scenes/UI_DevelopmentHud/UI_DevelopmentHud.tscn" id="7_j1ahd"]
+[ext_resource type="PackedScene" uid="uid://k4aky2wyyeb8" path="res://Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="8_4twfs"]
+[ext_resource type="PackedScene" uid="uid://chf638a5io3hb" path="res://Prefabs/WPN_Sword/WPN_Sword.tscn" id="8_fvela"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e8kfr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -91,9 +92,6 @@ mesh = SubResource("BoxMesh_lrdbu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.486975, 2.07321, 0.0112305)
 shape = SubResource("BoxShape3D_gkxao")
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("5_m2i1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72615, 0.472163, -8.17223)
-
 [node name="UI_DevelopmentHud" parent="." node_paths=PackedStringArray("player_character") instance=ExtResource("7_j1ahd")]
 player_character = NodePath("../PlayerCharacter")
 
@@ -141,3 +139,10 @@ shape = SubResource("BoxShape3D_gkxao")
 [node name="WeaponPickup2" parent="." instance=ExtResource("3_0ds5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1213, 0.944326, 1.49029)
 weapon = ExtResource("3_451mj")
+
+[node name="WeaponPickup3" parent="." instance=ExtResource("3_0ds5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1213, 0.944326, -3.40246)
+weapon = ExtResource("8_fvela")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("8_4twfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01261, 0.472163, -3.10287)
