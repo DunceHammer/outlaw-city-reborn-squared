@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://6hnuaoqkov30"]
+
+[ext_resource type="Script" path="res://Components/WeaponStatComponent.gd" id="1_bs66y"]
+[ext_resource type="PackedScene" uid="uid://c8mjiwykdc1qc" path="res://Prefabs/PROJ_GrandpaRifle/PROJ_GrandpaRifle.tscn" id="2_0w2q7"]
+[ext_resource type="PackedScene" uid="uid://qa5kw8rq7omo" path="res://Prefabs/FLASH_StenGun/FLASH_StenGun.tscn" id="3_0llca"]
+[ext_resource type="PackedScene" uid="uid://b4qmtixmnkybl" path="res://Models/SM_GrandpaRifle/SM_GrandpaRifle.glb" id="4_4ete6"]
+
+[node name="WPN_StenGun" type="Node3D"]
+
+[node name="WeaponStatComponent" type="Node" parent="."]
+script = ExtResource("1_bs66y")
+idle_animation = "Idle_StenGun"
+walk_animation = "Idle_StenGun"
+fire_animation = "Fire_StenGun"
+weapon_projectile = ExtResource("2_0w2q7")
+weapon_projectile_start = Vector3(1.348, 0, 0)
+weapon_position = Vector3(1.9, 0.99, 0)
+weapon_rotation = Vector3(187, 0, 253.5)
+attack_cooldown = 0.7
+muzzle_flash = ExtResource("3_0llca")
+muzzle_flash_position = Vector3(1.851, 0, 0)
+muzzle_flash_scale = Vector3(4.05021, 2.21508, 2.21508)
+
+[node name="SM_GrandpaRifle" parent="." instance=ExtResource("4_4ete6")]
+transform = Transform3D(0.778462, 0, 0, 0, 0.791659, 0, 0, 0, 1, 0, 0, 0)
