@@ -11,8 +11,9 @@ const ANIM_WALK = "Zombie_Walk"
 var enemy_speed = 2.5
 var player = null
 var animation_player = null
-var is_colliding_with_player = false
-var is_attacking = false
+var enemy_speed = 1
+var player
+var animation
 
 
 func animate():
@@ -29,6 +30,7 @@ func attack_end():
 func hit_player():
 	if (is_colliding_with_player):
 		player.get_node("HealthComponent").damage(ENEMY_DAMAGE)
+
 
 
 func _ready():
@@ -49,7 +51,7 @@ func _physics_process(_delta):
 	look_at(player.position, Vector3(0, 1, 0))
 	move_and_slide()
 	animate()
-
+  
 
 func _on_died():
 	player = get_node("/root").get_child(0).get_node("PlayerCharacter")
