@@ -41,9 +41,13 @@ func _on_round_cooldown_timer_timeout():
 
 
 func _on_child_order_changed():
+	if (round_cooldown_timer == null):
+		return # prevent weird use after free error
+
 	if (enemies_spawned == max_enemies):
 		if (self.get_child_count() == 0):
 			round_cooldown.emit()
 			round_cooldown_timer.start()
 		elif (self.get_child_count() == 1):
 			self.get_child(0).enemy_speed = 10
+
