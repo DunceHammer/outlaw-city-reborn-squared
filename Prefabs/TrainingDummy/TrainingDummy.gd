@@ -11,8 +11,8 @@ const ANIM_WALK = "Zombie_Walk"
 var enemy_speed = 2.5
 var player = null
 var animation_player = null
-var enemy_speed = 1
-var player
+var is_colliding_with_player = false
+var is_attacking = false
 var animation
 
 
