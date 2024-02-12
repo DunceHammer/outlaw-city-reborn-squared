@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b16mdqiny05d5"]
+[gd_scene load_steps=19 format=3 uid="uid://y8j8xafc2eyv"]
 
 [ext_resource type="PackedScene" uid="uid://b2p11yehqnout" path="res://Prefabs/WPN_StenGun/WPN_StenGun.tscn" id="2_fy5dt"]
 [ext_resource type="PackedScene" uid="uid://btydl5mrobo3c" path="res://Prefabs/WeaponPickup/WeaponPickup.tscn" id="3_0ds5x"]

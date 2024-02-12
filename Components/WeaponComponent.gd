@@ -90,6 +90,9 @@ func equip(weapon: PackedScene):
 	if weapon_stats == null:
 		print("WeaponStatComponent not found")
 		return
+		
+	if equipped_weapon:
+		equipped_weapon.queue_free()
 
 	var desired_scale = weapon_instance.scale / weapon_parent.scale
 	weapon_instance.position = weapon_stats.weapon_position
