@@ -545,7 +545,7 @@ skin = SubResource("Skin_kl7bx")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="."]
-transform = Transform3D(-1.1384e-07, 0.00152248, 0.149992, -1.08881e-09, -0.149992, 0.00152248, 0.15, 6.66926e-11, 1.13845e-07, -0.579467, 1.84594, -2.53289e-08)
+transform = Transform3D(1, 9.52571e-13, 7.15257e-07, -7.25877e-09, -0.999949, 0.0101499, 7.15221e-07, -0.0101499, -0.999949, 2.47917e-12, 1.48002, 3.86311)
 bone_name = "Hand_R"
 bone_idx = 8
 use_external_skeleton = true

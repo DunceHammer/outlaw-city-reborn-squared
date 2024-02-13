@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://chf638a5io3hb"]
 
 [ext_resource type="Script" path="res://Components/WeaponStatComponent.gd" id="1_bp55h"]
-[ext_resource type="PackedScene" uid="uid://cx4mxnkhe1sbh" path="res://Prefabs/PROJ_Sword/PROJ_Sword.tscn" id="2_ccq5c"]
+[ext_resource type="PackedScene" uid="uid://cx4mxnkhe1sbh" path="res://Prefabs/PROJ_BaseballBat/PROJ_BaseballBat.tscn" id="2_3maxt"]
 [ext_resource type="PackedScene" uid="uid://qa5kw8rq7omo" path="res://Prefabs/FLASH_StenGun/FLASH_StenGun.tscn" id="3_hh52u"]
-[ext_resource type="PackedScene" uid="uid://hvt6ni6tkbeu" path="res://Models/SM_Sword/SM_Sword.glb" id="4_4fg07"]
+[ext_resource type="PackedScene" uid="uid://be2adht6dqoyo" path="res://Models/SM_BaseballBat/SM_BaseballBat.glb" id="4_el88f"]
 
-[node name="WPN_Sword" type="Node3D"]
+[node name="WPN_BaseballBat" type="Node3D"]
 
 [node name="WeaponStatComponent" type="Node" parent="."]
 script = ExtResource("1_bp55h")
@@ -13,7 +13,7 @@ idle_animation = "Idle_Sword"
 walk_animation = "Idle_Sword"
 fire_animation = "Fire_Sword"
 fire_animation_duration = 1.0
-weapon_projectile = ExtResource("2_ccq5c")
+weapon_projectile = ExtResource("2_3maxt")
 weapon_position = Vector3(-0.42, 1.03, 0)
 weapon_rotation = Vector3(0.5, 11.4, -81.3)
 muzzle_flash = ExtResource("3_hh52u")
@@ -21,4 +21,5 @@ muzzle_flash_position = Vector3(1.26605, 0, 0)
 muzzle_flash_scale = Vector3(0, 0, 0)
 attach_projectile = true
 
-[node name="SM_Sword" parent="." instance=ExtResource("4_4fg07")]
+[node name="SM_BaseballBat" parent="." instance=ExtResource("4_el88f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.109995, 0)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cx4mxnkhe1sbh"]
 
-[ext_resource type="Script" path="res://Components/ProjectileComponent.gd" id="1_y6nv5"]
+[ext_resource type="Script" path="res://Components/ProjectileComponent.gd" id="1_6l6u1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5hi8o"]
 size = Vector3(0.423706, 2.30399, 0.386475)
@@ -10,10 +10,10 @@ size = Vector3(0.423706, 2.30399, 0.386475)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfnt6"]
 albedo_color = Color(1, 0, 0.0156863, 1)
 
-[node name="PROJ_Sword" type="Area3D"]
+[node name="PROJ_BaseballBat" type="Area3D"]
 
 [node name="ProjectileComponent" type="Node" parent="."]
-script = ExtResource("1_y6nv5")
+script = ExtResource("1_6l6u1")
 speed = 0
 damage = 15
 lifetime = 1

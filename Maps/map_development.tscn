@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Prefabs/BuyableDoor/BuyableDoor.gd" id="5_yypdd"]
 [ext_resource type="PackedScene" uid="uid://ykj5wtgsgpqm" path="res://Scenes/UI_DevelopmentHud/UI_DevelopmentHud.tscn" id="7_j1ahd"]
 [ext_resource type="PackedScene" uid="uid://k4aky2wyyeb8" path="res://Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="8_4twfs"]
-[ext_resource type="PackedScene" uid="uid://chf638a5io3hb" path="res://Prefabs/WPN_Sword/WPN_Sword.tscn" id="8_fvela"]
+[ext_resource type="PackedScene" uid="uid://chf638a5io3hb" path="res://Prefabs/WPN_BaseballBat/WPN_BaseballBat.tscn" id="8_fvela"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e8kfr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

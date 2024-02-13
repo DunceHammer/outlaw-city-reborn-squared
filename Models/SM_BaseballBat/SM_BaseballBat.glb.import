@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://hvt6ni6tkbeu"
-path="res://.godot/imported/SM_Sword.glb-190fbddb56df1597d1650a3976834cca.scn"
+uid="uid://be2adht6dqoyo"
+path="res://.godot/imported/SM_BaseballBat.glb-40a11ac957dd0c5e0bbadc56b76b78a3.scn"
 
 [deps]
 
-source_file="res://Models/SM_Sword/SM_Sword.glb"
-dest_files=["res://.godot/imported/SM_Sword.glb-190fbddb56df1597d1650a3976834cca.scn"]
+source_file="res://Models/SM_BaseballBat/SM_BaseballBat.glb"
+dest_files=["res://.godot/imported/SM_BaseballBat.glb-40a11ac957dd0c5e0bbadc56b76b78a3.scn"]
 
 [params]
 
