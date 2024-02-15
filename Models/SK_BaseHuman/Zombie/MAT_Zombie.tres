@@ -7,5 +7,6 @@ diffuse_mode = 3
 specular_mode = 1
 albedo_texture = ExtResource("1_rtyrq")
 emission_enabled = true
-emission_energy_multiplier = 0.15
+emission_energy_multiplier = 0.32
 emission_texture = ExtResource("1_rtyrq")
+texture_filter = 5
