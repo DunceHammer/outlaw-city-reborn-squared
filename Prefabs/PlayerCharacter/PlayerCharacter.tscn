@@ -795,7 +795,7 @@ skin = SubResource("Skin_cv4p3")
 surface_material_override/0 = ExtResource("7_2lr34")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="."]
-transform = Transform3D(-1.1384e-07, 0.00152248, 0.149992, -1.08883e-09, -0.149992, 0.00152248, 0.15, 6.66768e-11, 1.13845e-07, -0.579467, 1.84594, -2.5328e-08)
+transform = Transform3D(1, 8.46434e-13, 7.15256e-07, -7.25888e-09, -0.999949, 0.0101499, 7.15219e-07, -0.0101499, -0.999949, 9.11317e-12, 1.48002, 3.86311)
 bone_name = "Hand_R"
 bone_idx = 8
 use_external_skeleton = true

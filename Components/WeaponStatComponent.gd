@@ -15,3 +15,4 @@ class_name WeaponStatComponent
 @export var muzzle_flash_position : Vector3 = Vector3(0, 0, 0)
 @export var muzzle_flash_rotation : Vector3 = Vector3(0, 0, 0)
 @export var muzzle_flash_scale : Vector3 = Vector3(1, 1, 1)
+@export var attach_projectile : bool = false

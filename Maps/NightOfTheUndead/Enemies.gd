@@ -50,4 +50,3 @@ func _on_child_order_changed():
 			round_cooldown_timer.start()
 		elif (self.get_child_count() == 1):
 			self.get_child(0).enemy_speed = 10
-

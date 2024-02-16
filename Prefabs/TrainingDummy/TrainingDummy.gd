@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 
+@export var player_character : Node3D = null
 const PLAYER_PATH = "../../PlayerCharacter"
 const ENEMY_DAMAGE = 25
 const MODEL_NAME = "SK_BaseHuman_Anims"
@@ -34,14 +35,14 @@ func hit_player():
 
 
 func _ready():
-	player = get_node(PLAYER_PATH)
+	player = get_node(PLAYER_PATH) if not player_character else player_character
 	assert(player, "Player not found")
 	animation_player = get_node(MODEL_NAME).get_node("AnimationPlayer")
 	assert(animation_player, "AnimationPlayer not found")
 	$HealthComponent.died.connect(_on_died,0)
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var enemy_direction = (player.position - self.position).normalized()
 	velocity = enemy_direction * enemy_speed
 

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx4mxnkhe1sbh"]
+
+[ext_resource type="Script" path="res://Components/ProjectileComponent.gd" id="1_6l6u1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5hi8o"]
+size = Vector3(0.423706, 2.30399, 0.386475)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m3uis"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfnt6"]
+albedo_color = Color(1, 0, 0.0156863, 1)
+
+[node name="PROJ_BaseballBat" type="Area3D"]
+
+[node name="ProjectileComponent" type="Node" parent="."]
+script = ExtResource("1_6l6u1")
+speed = 0
+damage = 15
+lifetime = 1
+destroy_on_hit = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0103149, 0.806564, -0.00134277)
+shape = SubResource("BoxShape3D_5hi8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.265531, 0, 0, 0, 2.21742, 0, 0, 0, 0.286651, 0, 0.789644, 0)
+visible = false
+mesh = SubResource("BoxMesh_m3uis")
+surface_material_override/0 = SubResource("StandardMaterial3D_bfnt6")

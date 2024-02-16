@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bvd5fk8237gkp"]
+[gd_scene load_steps=23 format=3 uid="uid://bvd5fk8237gkp"]
 
 [ext_resource type="PackedScene" uid="uid://dpfndro2upgsp" path="res://Maps/NightOfTheUndead/Assets/SM_NightOfTheUndead.glb" id="1_you0s"]
 [ext_resource type="PackedScene" uid="uid://k4aky2wyyeb8" path="res://Prefabs/PlayerCharacter/PlayerCharacter.tscn" id="2_y35rs"]
@@ -11,6 +11,8 @@
 [ext_resource type="CompressedTexture3D" uid="uid://d34ub26m3bb5" path="res://Maps/NightOfTheUndead/Assets/TEX_FogMask.png" id="9_bnxql"]
 [ext_resource type="CompressedTexture3D" uid="uid://4k1vtixdhp4c" path="res://Maps/NightOfTheUndead/Assets/TEX_FogMaskInverted.png" id="9_wcsqs"]
 [ext_resource type="Script" path="res://Maps/NightOfTheUndead/Enemies.gd" id="11_h3ply"]
+[ext_resource type="PackedScene" uid="uid://6hnuaoqkov30" path="res://Prefabs/WPN_GrandpaRifle/WPN_GrandpaRifle.tscn" id="12_b8lba"]
+[ext_resource type="PackedScene" uid="uid://chf638a5io3hb" path="res://Prefabs/WPN_BaseballBat/WPN_BaseballBat.tscn" id="13_f632l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ykafg"]
 sky_top_color = Color(0.0862745, 0.0980392, 0.172549, 1)
@@ -149,6 +151,14 @@ wait_time = 2.0
 
 [node name="RoundCooldownTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="WeaponPickup2" parent="." instance=ExtResource("3_cg45j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61154, -0.255916, 2.53156)
+weapon = ExtResource("12_b8lba")
+
+[node name="WeaponPickup3" parent="." instance=ExtResource("3_cg45j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.38284, -0.255916, 2.53156)
+weapon = ExtResource("13_f632l")
 
 [connection signal="child_order_changed" from="Enemies" to="Enemies" method="_on_child_order_changed"]
 [connection signal="round_cooldown" from="Enemies" to="UI_DevelopmentHud" method="_on_enemies_round_cooldown"]
