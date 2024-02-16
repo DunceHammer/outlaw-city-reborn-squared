@@ -340,6 +340,8 @@ bind/20/bone = -1
 bind/20/pose = Transform3D(-6.66667, 0, 8.95392e-06, -1.49666e-12, -6.66666, 1.58635e-06, 8.95392e-06, 0, 6.66666, 1.28751e-06, 1.94618, 1.0229)
 
 [node name="PlayerCharacter" type="CharacterBody3D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_p62v6")
 
 [node name="HealthComponent" type="Node" parent="."]
@@ -545,7 +547,7 @@ skin = SubResource("Skin_kl7bx")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="."]
-transform = Transform3D(-1.1384e-07, 0.00152281, 0.149992, -1.08931e-09, -0.149992, 0.00152281, 0.15, 6.65046e-11, 1.13845e-07, -0.579465, 1.84594, -2.53292e-08)
+transform = Transform3D(-1.1384e-07, 0.00152248, 0.149992, -1.08883e-09, -0.149992, 0.00152248, 0.15, 6.66768e-11, 1.13845e-07, -0.579467, 1.84594, -2.5328e-08)
 bone_name = "Hand_R"
 bone_idx = 8
 use_external_skeleton = true

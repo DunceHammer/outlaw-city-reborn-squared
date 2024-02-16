@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://df52hkfojajhn"]
+[gd_scene load_steps=6 format=3 uid="uid://df52hkfojajhn"]
 
 [ext_resource type="Script" path="res://Components/InteractableComponent.gd" id="1_24ejg"]
+[ext_resource type="Script" path="res://Prefabs/BuyableDoor/BuyableDoor.gd" id="1_ewwl8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixpre"]
 albedo_color = Color(0.458824, 0.27451, 0, 1)
@@ -12,6 +13,7 @@ material = SubResource("StandardMaterial3D_ixpre")
 size = Vector3(3.11321, 4.2533, 0.24707)
 
 [node name="BuyableDoor" type="StaticBody3D"]
+script = ExtResource("1_ewwl8")
 
 [node name="InteractableComponent" type="Node" parent="."]
 script = ExtResource("1_24ejg")
