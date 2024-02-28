@@ -15,6 +15,7 @@ var is_colliding_with_player = false
 var is_attacking = false
 var animation
 
+@onready var nav: NavigationAgent3D = $NavigationAgent3D
 
 func animate():
 	if (is_attacking):
@@ -41,10 +42,14 @@ func _ready():
 	$HealthComponent.died.connect(_on_died,0)
 
 
-func _physics_process(_delta):
-	var enemy_direction = (player.position - self.position).normalized()
-	velocity = enemy_direction * enemy_speed
-
+func _physics_process(delta):
+	var enemy_direction = Vector3()
+	
+	nav.target_position = player.position
+	
+	enemy_direction = nav.get_next_path_position() - global_position
+	enemy_direction = enemy_direction.normalized()
+	velocity = velocity.lerp(enemy_direction * enemy_speed , delta)
 	if (is_colliding_with_player):
 		is_attacking = true
 
